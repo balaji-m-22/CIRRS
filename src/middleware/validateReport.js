@@ -11,7 +11,8 @@ function validateReport(req, res, next) {
   if (typeof longitude !== 'number' || longitude < -180 || longitude > 180) errors.push('longitude must be a number between -180 and 180');
   if (!photo) errors.push('a geotagged photo is required');
 
-  // TODO: enforce the 5 MB photo size limit (currently not checked)
+   const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+   if (photo && Buffer.byteLength(photo, 'base64') > MAX_PHOTO_BYTES) errors.push('photo must be 5 MB or smaller');
 
   if (errors.length) return res.status(400).json({ errors });
   next();
