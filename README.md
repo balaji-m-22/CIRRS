@@ -1,5 +1,4 @@
-   # CIRRS - Main Branch Version
-
+   # CIRRS 
 Civic/Community Issue Reporting \& Routing System
 
 ## Problem Statement
